@@ -34,8 +34,8 @@ jobs:
             echo "DATABRICKS_HOST=https://adb-3335360397670417.17.azuredatabricks.net" >> $GITHUB_ENV
             echo "DATABRICKS_TOKEN=dapid0b7b2813505123108990d35b1259f97-2" >> $GITHUB_ENV
           else
-            echo "DATABRICKS_HOST=<DatabricksWorkSpaceURL>" >> $GITHUB_ENV
-            echo "DATABRICKS_TOKEN=<PersonalAccessToken>" >> $GITHUB_ENV
+            echo "DATABRICKS_HOST=" >> $GITHUB_ENV
+            echo "DATABRICKS_TOKEN=" >> $GITHUB_ENV
           fi
       - name: install-databricks-cli
         uses: microsoft/install-databricks-cli@v1.0.0
