@@ -44,4 +44,4 @@ jobs:
           databricks-host: ${{ env.DATABRICKS_HOST }}
           databricks-token: ${{ env.DATABRICKS_TOKEN }}
           local-path: /home/runner/work/movie-insights/movie-insights/
-          remote-path: /Workspace/Users/22130035@student.hcmus.edu.vn
+          remote-path: /Workspace/Users/22130035@student.hcmus.edu.vn/workspace-prd
