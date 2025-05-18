@@ -30,7 +30,7 @@ jobs:
           echo "Deploying to environment: $DEPLOY_ENV"
 
           if [ "$DEPLOY_ENV" = "prd" ]; then
-            echo "DATABRICKS_HOST=https://adb-3589910424805442.2.azuredatabricks.net" >> $GITHUB_ENV
+            echo "DATABRICKS_HOST=https://adb-3335360397670417.17.azuredatabricks.net" >> $GITHUB_ENV
             echo "DATABRICKS_TOKEN=dapi8882cb3a92b6578dcaf515101c03324f-2" >> $GITHUB_ENV
           else
             echo "DATABRICKS_HOST=<UAT_DATABRICKS_URL>" >> $GITHUB_ENV
