@@ -1,46 +1,44 @@
-name: Databricks CI/CD with Personal Access Token
+name: Databricks CD with Personal Access Token
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to Deploy to'
+        required: true
+        type: choice
+        options:
+          - 'uat'
+          - 'prd'
+        default: 'prd'
 
 permissions:
-  id-token: write
-  contents: read
+        id-token: write
+        contents: read
 
 jobs:
   deploy:
+    environment: ${{ github.event.inputs.environment }}
     runs-on: ubuntu-latest
-
-    env:
-      # Default to production if not set
-      DEPLOY_ENV: prd
-
+    
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4 
+      
       - name: Set Environment Variables
         run: |
-          # Set the environment (default is 'prd')
-          if [ -f "./env.txt" ]; then
-            export DEPLOY_ENV=$(cat ./env.txt)
-          fi
-          echo "Deploying to environment: $DEPLOY_ENV"
-
-          if [ "$DEPLOY_ENV" = "prd" ]; then
+          if [ "${{ github.event.inputs.environment }}" = "prd" ]; then
             echo "DATABRICKS_HOST=https://adb-3335360397670417.17.azuredatabricks.net" >> $GITHUB_ENV
-            echo "DATABRICKS_TOKEN=dapi8882cb3a92b6578dcaf515101c03324f-2" >> $GITHUB_ENV
+            echo "DATABRICKS_TOKEN=dapid0b7b2813505123108990d35b1259f97-2" >> $GITHUB_ENV
           else
-            echo "DATABRICKS_HOST=<UAT_DATABRICKS_URL>" >> $GITHUB_ENV
-            echo "DATABRICKS_TOKEN=<UAT_PERSONAL_ACCESS_TOKEN>" >> $GITHUB_ENV
+            echo "DATABRICKS_HOST=<DatabricksWorkSpaceURL>" >> $GITHUB_ENV
+            echo "DATABRICKS_TOKEN=<PersonalAccessToken>" >> $GITHUB_ENV
           fi
-
-      - name: Install Databricks CLI
+          
+      - name: install-databricks-cli
         uses: microsoft/install-databricks-cli@v1.0.0
-
-      - name: Import Notebooks to Databricks
+       
+          
+      - name: Import Databricks notebooks
         uses: microsoft/databricks-import-notebook@v1.0.0
         with:
           databricks-host: ${{ env.DATABRICKS_HOST }}
