@@ -45,5 +45,5 @@ jobs:
         with:
           databricks-host: ${{ env.DATABRICKS_HOST }}
           databricks-token: ${{ env.DATABRICKS_TOKEN }}
-          local-path: ./notebooks  # Adjust based on your repo structure
+          local-path: /home/runner/work/movie-insights/movie-insights/
           remote-path: /Workspace/Users/22130035@student.hcmus.edu.vn
