@@ -14,23 +14,12 @@ This project implements an end-to-end automated data pipeline on Azure Databrick
 - Automated CI/CD pipelines with GitHub Actions  
 - Power BI dashboard with auto-refresh and dynamic filters  
 
-#### Prerequisites
-
-- Azure subscription with Databricks workspace and Data Lake Storage Gen2  
-- Python 3.7+ and PySpark environment  
-- Power BI Desktop or Power BI Service account  
-- Git and GitHub account for version control and CI/CD  
-
-#### License
-
-This project is licensed under the MIT License.
-
 #### Acknowledgments
 
 - TMDB API for movie data  
 - Azure Databricks and Microsoft Azure for cloud infrastructure  
 - Power BI for data visualization  
 
-![](path)
+
 
 
